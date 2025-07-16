@@ -1,0 +1,183 @@
+/* --- Center Play/Pause Icon --- */
+.center-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 50px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5; 
+  transition: opacity 0.2s ease;
+}
+.center-icon.show {
+  opacity: 1;
+  animation: pop-out 0.8s ease-in-out;
+}
+@keyframes pop-out {
+  0% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+  25% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  75% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0; }
+}
+
+/* --- Generic Popup Menu Styles (for Load Video & Effects) --- */
+.popup-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* NEW: Animation state */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup-menu.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.popup-menu .menu-content {
+  background: #1e2021;
+  color: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  position: relative;
+  width: 90%;
+  max-width: 450px;
+  
+  /* NEW: Animation for content */
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.3s ease;
+}
+
+.popup-menu.show .menu-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.menu-content .close-menu,
+.menu-content .close-panel {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.2s, transform 0.2s;
+}
+.menu-content .close-menu:hover,
+.menu-content .close-panel:hover {
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.menu-content h4 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.menu-content label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.menu-content .url-input {
+  display: flex;
+  flex-direction: column;
+}
+.menu-content input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #444;
+  background: #2a2c2e;
+  color: #fff;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.menu-content button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #3e97fd;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.menu-content button:hover {
+  background-color: #2289ff;
+}
+.menu-content .separator-text {
+  text-align: center;
+  color: #888;
+  font-weight: bold;
+  margin: 10px 0;
+}
+/* This class is shared now, so we need to define the gap in one place */
+.video-load-menu .menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* --- Playback Speed Menu --- */
+.playback-content{
+  display: flex;
+  position: relative;
+}
+.playback-content .speed-options{
+  position: absolute;
+  list-style: none;
+  left: -40px;
+  bottom: 40px;
+  width: 95px;
+  overflow: hidden;
+  opacity: 0;
+  border-radius: 4px;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.13s ease;
+}
+.playback-content .speed-options.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+.speed-options li{
+  cursor: pointer;
+  color: #000;
+  font-size: 14px;
+  margin: 2px 0;
+  padding: 5px 0 5px 15px;
+  transition: all 0.1s ease;
+}
+.speed-options li:where(:first-child, :last-child){
+  margin: 0px;
+}
+.speed-options li:hover{
+  background: #dfdfdf;
+}
+.speed-options li.active{
+  color: #fff;
+  background: #3e97fd;
+}

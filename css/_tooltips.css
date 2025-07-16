@@ -1,0 +1,35 @@
+/* Styles for the tooltip functionality. */
+.tooltip-container {
+  position: relative;
+  display: inline-block; /* Use inline-block for stable layout */
+}
+
+.tooltip-container .tooltip-text {
+  /* Sizing and Appearance */
+  font-size: 12px;
+  line-height: 1.4; /* Ensures consistent vertical alignment of text */
+  color: #e0e0e0;
+  background-color: rgba(25, 27, 28, 0.95);
+  padding: 5px 9px; /* Tighter, more balanced padding */
+  border-radius: 5px;
+  width: max-content; /* Automatically sizes width to fit content perfectly */
+  
+  /* Positioning */
+  position: absolute;
+  bottom: 120%; /* Positioned slightly above the button */
+  left: 50%;
+  transform: translateX(-50%) translateY(4px); /* Starts slightly lower for animation */
+  z-index: 20;
+  
+  /* Animation & Visibility */
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0); /* Animates up to its final position */
+}

@@ -1,0 +1,80 @@
+.wrapper .video-controls{
+  padding: 5px 20px 10px;
+}
+.video-controls .options{
+  width: 100%;
+}
+.video-controls .options:first-child{
+  justify-content: flex-start;
+}
+.video-controls .options:last-child{
+  justify-content: flex-end;
+}
+.options button{
+  height: 40px;
+  width: 40px;
+  font-size: 19px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: #efefef;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.options button :where(i, span) {
+  height: 100%;
+  width: 100%;
+  line-height: 40px;
+}
+.options button:hover :where(i, span){
+  color: #fff;
+}
+.options button:active :where(i, span){
+  transform: scale(0.9);
+}
+.options button span{
+  font-size: 23px;
+}
+.options input{
+  height: 4px;
+  margin-left: 3px;
+  max-width: 75px;
+  accent-color: #0078FF;
+}
+.options .video-timer{
+  color: #efefef;
+  margin-left: 15px;
+  font-size: 14px;
+}
+.video-timer .separator{
+  margin: 0 5px;
+  font-size: 16px;
+  font-family: "Open sans";
+}
+
+.options button.loop.active {
+    color: #3e97fd;
+}
+
+.options .volume-controls {
+    display: flex;
+    align-items: center;
+}
+
+.options .volume-controls .volume-slider {
+    width: 0;
+    opacity: 0;
+    transition: width 0.2s ease, opacity 0.2s ease;
+    pointer-events: none;
+    margin-left: 5px;
+}
+
+.options .volume-controls:hover .volume-slider {
+    width: 75px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.options button.loop.active {
+    color: #3e97fd;
+}
